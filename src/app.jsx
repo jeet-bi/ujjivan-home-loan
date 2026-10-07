@@ -57,6 +57,7 @@ function App() {
   return (
     <JourneyCtx.Provider value={{ sc, data, set, log }}>
       <div className="stage">
+        <div className="proto-banner"><Ic k="alert" s={14} /> Design prototype, not an Ujjivan SFB website. Demo data only; nothing you type is sent anywhere.</div>
         <div className="stage-header">
           <div className="stage-brand"><Wordmark light size={34} />
             <div><h1>Home Loan journey prototype</h1><p>Persona: Arjun Mehta, salaried, Nagpur · buyer side, end to end</p></div></div>
