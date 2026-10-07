@@ -61,6 +61,6 @@ All figures (rates, fees, amounts, dates, names) live in `src/data.jsx`, so they
 
 ## Notes
 
-- **The logo is a placeholder.** `UMark` in `src/kit.jsx` is an abstract mark in brand colours; replace it with the official Ujjivan SFB logo asset before showing this outside the team.
-- The colour hex codes (teal `#00727A`, orange `#F58220`) approximate the brand palette; swap them for the official values in `:root` in `src/styles.css`.
+- **Logo:** the official Ujjivan SFB mark lives in `assets/ujjivan-mark.png` (transparent background, cropped). The `UMark` component in `src/kit.jsx` uses it everywhere; on coloured surfaces it sits on a white disc, and in the loader the ring spins around it rather than rotating the logo itself.
+- **Colours:** the teal tokens in `:root` (`src/styles.css`) come from the logo's teal `#219D83`, darkened to `#13806A` for buttons so white text stays readable. The orange `#F68E35` is from the logo's leaves.
 - This is a prototype. Every number is illustrative, and no real KYC, bureau, AA or payment system is called.

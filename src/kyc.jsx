@@ -234,7 +234,7 @@ const AA_BANKS = [
   { id: 'hdfc', nm: 'HDFC Bank', sub: 'Accounts linked to your mobile', c: '#004C8F', ab: 'H' },
   { id: 'icici', nm: 'ICICI Bank', sub: 'Savings · Current', c: '#AE282E', ab: 'I' },
   { id: 'sbi', nm: 'State Bank of India', sub: 'Savings', c: '#22409A', ab: 'S' },
-  { id: 'ujj', nm: 'Ujjivan SFB', sub: 'Savings', c: '#00727A', ab: 'U' },
+  { id: 'ujj', nm: 'Ujjivan SFB', sub: 'Savings', c: '#219D83', ab: 'U' },
 ];
 function FinData({ onClose, onDone }) {
   const { sc, log } = useJ();

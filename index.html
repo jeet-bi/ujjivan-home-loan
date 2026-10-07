@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Home Loan Journey Prototype</title>
+<link rel="icon" type="image/png" href="assets/ujjivan-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Nunito+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,11 +14,10 @@
 <script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
 <style>
 /* Ujjivan SFB · Home Loan journey prototype — styles
-   Palette approximates Ujjivan SFB's public brand (teal primary, orange accent).
-   Swap the values below for the official brand-guide hex codes if they differ. */
+   Teal family is derived from the logo's teal #219D83 (darkened for 4.5:1 text contrast); orange from the logo leaves. */
 :root {
-  --t: #00727A;   --td: #004B52;  --tm: #0B8A93;  --tl: #E3F3F3;  --tb: #B7DEE0;
-  --o: #F58220;   --od: #C9620A;  --ol: #FEF0E2;  --ob: #F9CB9C;  --og: #FFB066;
+  --t: #13806A;   --td: #0B5547;  --tm: #219D83;  --tl: #E3F4EF;  --tb: #B3E0D2;
+  --o: #F68E35;   --od: #C9620A;  --ol: #FEF0E2;  --ob: #F9CB9C;  --og: #FFB066;
   --ink: #0E2A2E; --ink2: #2B4448; --muted: #5E7478; --faint: #95A7AA; --border: #E0E8E9;
   --ok: #12A16B;  --okd: #0B7A50; --okl: #E4F6EE; --okb: #A9E1C7;
   --warn: #B26A00; --warnl: #FFF4DF; --warnb: #F5D49A;
@@ -100,7 +100,10 @@ button { font-family: inherit; }
 .wm b { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 19px; color: var(--t); letter-spacing: -.02em; }
 .wm small { font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--o); font-weight: 700; margin-top: 3px; }
 .wm.light b { color: #fff; } .wm.light small { color: var(--og); }
-.umark-spin { animation: spin 2.6s cubic-bezier(.5,0,.5,1) infinite; transform-origin: 50% 50%; }
+.umark-tile { display: grid; place-items: center; border-radius: 50%; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.18); flex-shrink: 0; }
+.umark-tile img { display: block; }
+.umark-tile.breathe { animation: breathe 2.2s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 
 /* ─── Website (landing + lead form) ─── */
 .web-nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #fff; border-bottom: 1px solid #EEF2F2; }
@@ -116,7 +119,7 @@ button { font-family: inherit; }
 .hero-stats div { flex: 1; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 10px; }
 .hero-stats b { display: block; font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; }
 .hero-stats span { font-size: 10px; opacity: .8; text-transform: uppercase; letter-spacing: .05em; }
-.web-card { margin: -14px 14px 14px; position: relative; z-index: 2; background: #fff; border-radius: 18px; padding: 18px 16px; box-shadow: 0 18px 40px -20px rgba(0,75,82,.5); border: 1px solid var(--border); }
+.web-card { margin: -14px 14px 14px; position: relative; z-index: 2; background: #fff; border-radius: 18px; padding: 18px 16px; box-shadow: 0 18px 40px -20px rgba(11,85,71,.5); border: 1px solid var(--border); }
 .web-card h2 { margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 800; color: var(--ink); }
 .web-card .wc-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; line-height: 1.45; }
 .web-sec { padding: 4px 18px 10px; }
@@ -144,7 +147,7 @@ button { font-family: inherit; }
 .lab { font-size: 11px; font-weight: 700; color: var(--ink2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
 .lab .opt { text-transform: none; letter-spacing: 0; font-weight: 600; color: var(--faint); }
 .ctrl { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 0 14px; display: flex; align-items: center; gap: 10px; min-height: 50px; transition: border-color .15s; }
-.ctrl:focus-within { border-color: var(--t); box-shadow: 0 0 0 3px rgba(0,114,122,.1); }
+.ctrl:focus-within { border-color: var(--t); box-shadow: 0 0 0 3px rgba(19,128,106,.1); }
 .ctrl input, .ctrl select { flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); padding: 13px 0; }
 .ctrl .pre { font-size: 15px; font-weight: 700; color: var(--muted); }
 .ctrl .suf { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
@@ -190,7 +193,7 @@ button { font-family: inherit; }
 .btn { width: 100%; border: 0; border-radius: 13px; padding: 15px 18px; font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; color: #fff;
   background: linear-gradient(135deg, var(--o), var(--od)); box-shadow: 0 12px 26px -12px rgba(201,98,10,.7); display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform .1s; }
 .btn:active { transform: scale(.985); }
-.btn.teal { background: linear-gradient(135deg, var(--t), var(--td)); box-shadow: 0 12px 26px -12px rgba(0,75,82,.7); }
+.btn.teal { background: linear-gradient(135deg, var(--t), var(--td)); box-shadow: 0 12px 26px -12px rgba(11,85,71,.7); }
 .btn.off { background: #C9D4D5; box-shadow: none; cursor: not-allowed; }
 .btn.compact { width: auto; padding: 14px 22px; }
 .btn.ghost { background: #fff; color: var(--ink2); border: 1.5px solid var(--border); box-shadow: none; }
@@ -265,7 +268,7 @@ button { font-family: inherit; }
 .hub-progress .hp-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--t), var(--o)); transition: width .5s cubic-bezier(.2,.8,.2,1); }
 .hub-progress .hp-txt { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--faint); white-space: nowrap; }
 .task { display: flex; align-items: center; gap: 13px; background: #fff; border: 1.5px solid var(--border); border-radius: 16px; padding: 14px; margin-bottom: 10px; cursor: pointer; transition: border-color .18s, box-shadow .18s, transform .12s; }
-.task:not(.done):not(.locked):hover { border-color: var(--tb); box-shadow: 0 6px 18px -10px rgba(0,114,122,.45); }
+.task:not(.done):not(.locked):hover { border-color: var(--tb); box-shadow: 0 6px 18px -10px rgba(19,128,106,.45); }
 .task:not(.done):not(.locked):active { transform: scale(.99); }
 .task.done { border-color: var(--okb); background: var(--okl); cursor: default; }
 .task.locked { opacity: .55; cursor: not-allowed; }
@@ -283,7 +286,7 @@ button { font-family: inherit; }
 .tk-status { flex-shrink: 0; font-size: 12.5px; font-weight: 800; color: var(--t); display: flex; align-items: center; gap: 4px; }
 .task.done .tk-status { color: var(--okd); } .task.wait .tk-status { color: var(--od); }
 .hub-secure { display: flex; align-items: center; gap: 8px; justify-content: center; font-size: 11px; color: var(--faint); margin: 14px 2px 6px; text-align: center; }
-.help-fab { position: absolute; right: 14px; bottom: 92px; z-index: 30; display: flex; align-items: center; gap: 7px; background: #fff; border: 1.5px solid var(--tb); color: var(--t); font-weight: 800; font-size: 12px; padding: 9px 13px; border-radius: 999px; box-shadow: 0 10px 24px -12px rgba(0,75,82,.6); cursor: pointer; }
+.help-fab { position: absolute; right: 14px; bottom: 92px; z-index: 30; display: flex; align-items: center; gap: 7px; background: #fff; border: 1.5px solid var(--tb); color: var(--t); font-weight: 800; font-size: 12px; padding: 9px 13px; border-radius: 999px; box-shadow: 0 10px 24px -12px rgba(11,85,71,.6); cursor: pointer; }
 
 /* ─── Sub-flow shell ─── */
 .sub { height: 100%; display: flex; flex-direction: column; background: var(--app-bg); position: relative; overflow: hidden; animation: subIn .32s cubic-bezier(.2,.85,.25,1); }
@@ -325,7 +328,7 @@ button { font-family: inherit; }
 /* choice cards */
 .choice { display: flex; flex-direction: column; gap: 10px; }
 .choice-card { display: flex; align-items: center; gap: 13px; cursor: pointer; background: #fff; border: 1.5px solid var(--border); border-radius: 15px; padding: 14px; transition: border-color .16s, box-shadow .16s; }
-.choice-card:hover { border-color: var(--tb); box-shadow: 0 8px 20px -12px rgba(0,114,122,.45); }
+.choice-card:hover { border-color: var(--tb); box-shadow: 0 8px 20px -12px rgba(19,128,106,.45); }
 .choice-card.sel { border-color: var(--t); background: var(--tl); }
 .choice-card .cc-ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--tl); color: var(--t); flex-shrink: 0; }
 .choice-card.or .cc-ic { background: var(--ol); color: var(--od); }
@@ -411,7 +414,7 @@ button { font-family: inherit; }
 .o2-meta b { font-family: 'Nunito', sans-serif; font-size: 14px; }
 .o2-body { padding: 16px 16px 8px; }
 .o2-terms { display: flex; gap: 8px; margin-bottom: 6px; }
-.o2-term { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px 11px; box-shadow: 0 2px 10px rgba(0,114,122,.05); }
+.o2-term { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px 11px; box-shadow: 0 2px 10px rgba(19,128,106,.05); }
 .o2-tk { font-size: 10px; color: var(--faint); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
 .o2-tv { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: var(--td); margin: 5px 0 2px; }
 .o2-ts { font-size: 10.5px; color: var(--muted); line-height: 1.25; }
@@ -490,7 +493,7 @@ button { font-family: inherit; }
 
 /* slider */
 .range { width: 100%; accent-color: var(--o); }
-.elig-hero { border-radius: 20px; padding: 20px; color: #fff; position: relative; overflow: hidden; background: linear-gradient(140deg, var(--t), var(--td)); box-shadow: 0 18px 40px -16px rgba(0,75,82,.6); }
+.elig-hero { border-radius: 20px; padding: 20px; color: #fff; position: relative; overflow: hidden; background: linear-gradient(140deg, var(--t), var(--td)); box-shadow: 0 18px 40px -16px rgba(11,85,71,.6); }
 .elig-hero::after { content: ''; position: absolute; right: -60px; top: -70px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(245,130,32,.32), transparent 70%); }
 .elig-hero .lab2 { font-size: 11.5px; opacity: .85; text-transform: uppercase; letter-spacing: .07em; position: relative; z-index: 1; }
 .elig-hero .big { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -.025em; margin: 3px 0; position: relative; z-index: 1; }
@@ -688,24 +691,21 @@ function Ic({ k, s = 20, c = 'currentColor', w = 1.9 }) {
 }
 const Check = ({ s = 12 }) => <Ic k="check" s={s} />;
 
-/* ── Brand mark: abstract sunrise-and-figure in Ujjivan teal/orange.
-     Placeholder for the official logo — replace UMark with the brand SVG when available. ── */
-function UMark({ size = 40, light = false, spin = false }) {
-  const bg = light ? 'rgba(255,255,255,0.14)' : 'var(--t)';
-  return (
-    <svg width={size} height={size} viewBox="0 0 48 48" className={spin ? 'umark-spin' : ''} style={{ display: 'block', flexShrink: 0 }}>
-      <circle cx="24" cy="24" r="23" fill={bg} stroke={light ? 'rgba(255,255,255,0.35)' : 'none'} />
-      <path d="M9 31a15 15 0 0130 0z" fill="#F58220" />
-      <circle cx="24" cy="15" r="4.2" fill="#fff" />
-      <path d="M14 26c3-4.5 6.5-6.5 10-6.5s7 2 10 6.5" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round" />
-      <path d="M9 31h30" stroke={light ? 'rgba(255,255,255,0.5)' : '#004B52'} strokeWidth="1.5" />
-    </svg>
+/* ── Brand mark: official Ujjivan SFB logo (assets/ujjivan-mark.png, transparent).
+     On coloured surfaces (loader) it sits on a white disc; the ring spins, the logo never rotates. ── */
+const LOGO_SRC = 'assets/ujjivan-mark.png';
+function UMark({ size = 40, tile = false, spin = false }) {
+  if (tile || spin) return (
+    <div className={'umark-tile' + (spin ? ' breathe' : '')} style={{ width: size, height: size }}>
+      <img src={LOGO_SRC} alt="Ujjivan SFB" width={Math.round(size * 0.66)} height={Math.round(size * 0.66)} />
+    </div>
   );
+  return <img src={LOGO_SRC} alt="Ujjivan SFB" width={size} height={size} style={{ display: 'block', flexShrink: 0 }} />;
 }
 function Wordmark({ light, size = 32 }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-      <UMark size={size} light={light} />
+      <UMark size={size} />
       <span className={'wm' + (light ? ' light' : '')}><b>ujjivan</b><small>Small Finance Bank</small></span>
     </div>
   );
@@ -817,7 +817,7 @@ function BrandLoader({ msg, sub, ms = 2300, onDone }) {
   return (
     <div className="app">
       <div className="bloader">
-        <div className="bl-ring"><div className="ring-conic" /><UMark size={76} light spin /></div>
+        <div className="bl-ring"><div className="ring-conic" /><UMark size={76} spin /></div>
         <span className="wm light"><b style={{ fontSize: 28 }}>ujjivan</b><small>Home Loans</small></span>
         <div className="bl-msg">{msg}</div>
         {sub && <div className="bl-sub">{sub}</div>}
@@ -1486,7 +1486,7 @@ const AA_BANKS = [
   { id: 'hdfc', nm: 'HDFC Bank', sub: 'Accounts linked to your mobile', c: '#004C8F', ab: 'H' },
   { id: 'icici', nm: 'ICICI Bank', sub: 'Savings · Current', c: '#AE282E', ab: 'I' },
   { id: 'sbi', nm: 'State Bank of India', sub: 'Savings', c: '#22409A', ab: 'S' },
-  { id: 'ujj', nm: 'Ujjivan SFB', sub: 'Savings', c: '#00727A', ab: 'U' },
+  { id: 'ujj', nm: 'Ujjivan SFB', sub: 'Savings', c: '#219D83', ab: 'U' },
 ];
 function FinData({ onClose, onDone }) {
   const { sc, log } = useJ();

@@ -54,24 +54,21 @@ function Ic({ k, s = 20, c = 'currentColor', w = 1.9 }) {
 }
 const Check = ({ s = 12 }) => <Ic k="check" s={s} />;
 
-/* ── Brand mark: abstract sunrise-and-figure in Ujjivan teal/orange.
-     Placeholder for the official logo — replace UMark with the brand SVG when available. ── */
-function UMark({ size = 40, light = false, spin = false }) {
-  const bg = light ? 'rgba(255,255,255,0.14)' : 'var(--t)';
-  return (
-    <svg width={size} height={size} viewBox="0 0 48 48" className={spin ? 'umark-spin' : ''} style={{ display: 'block', flexShrink: 0 }}>
-      <circle cx="24" cy="24" r="23" fill={bg} stroke={light ? 'rgba(255,255,255,0.35)' : 'none'} />
-      <path d="M9 31a15 15 0 0130 0z" fill="#F58220" />
-      <circle cx="24" cy="15" r="4.2" fill="#fff" />
-      <path d="M14 26c3-4.5 6.5-6.5 10-6.5s7 2 10 6.5" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round" />
-      <path d="M9 31h30" stroke={light ? 'rgba(255,255,255,0.5)' : '#004B52'} strokeWidth="1.5" />
-    </svg>
+/* ── Brand mark: official Ujjivan SFB logo (assets/ujjivan-mark.png, transparent).
+     On coloured surfaces (loader) it sits on a white disc; the ring spins, the logo never rotates. ── */
+const LOGO_SRC = 'assets/ujjivan-mark.png';
+function UMark({ size = 40, tile = false, spin = false }) {
+  if (tile || spin) return (
+    <div className={'umark-tile' + (spin ? ' breathe' : '')} style={{ width: size, height: size }}>
+      <img src={LOGO_SRC} alt="Ujjivan SFB" width={Math.round(size * 0.66)} height={Math.round(size * 0.66)} />
+    </div>
   );
+  return <img src={LOGO_SRC} alt="Ujjivan SFB" width={size} height={size} style={{ display: 'block', flexShrink: 0 }} />;
 }
 function Wordmark({ light, size = 32 }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-      <UMark size={size} light={light} />
+      <UMark size={size} />
       <span className={'wm' + (light ? ' light' : '')}><b>ujjivan</b><small>Small Finance Bank</small></span>
     </div>
   );
@@ -183,7 +180,7 @@ function BrandLoader({ msg, sub, ms = 2300, onDone }) {
   return (
     <div className="app">
       <div className="bloader">
-        <div className="bl-ring"><div className="ring-conic" /><UMark size={76} light spin /></div>
+        <div className="bl-ring"><div className="ring-conic" /><UMark size={76} spin /></div>
         <span className="wm light"><b style={{ fontSize: 28 }}>ujjivan</b><small>Home Loans</small></span>
         <div className="bl-msg">{msg}</div>
         {sub && <div className="bl-sub">{sub}</div>}

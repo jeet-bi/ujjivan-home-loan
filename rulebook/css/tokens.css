@@ -1,8 +1,8 @@
 /* Home Loan STP module — Ujjivan SFB-inspired palette (teal primary, orange accent).
    Hex values approximate the public brand; swap for the official brand-guide values before external use. */
 :root{
-  --brand:#00727A; --brand-deep:#004B52; --brand-soft:#E2F2F2;
-  --orange:#F58220; --orange-ink:#B85A0A; --orange-soft:#FDEEDF;
+  --brand:#13806A; --brand-deep:#0B5547; --brand-soft:#E3F4EF;
+  --orange:#F68E35; --orange-ink:#B85A0A; --orange-soft:#FDEEDF;
   --bg:#F6F8F8; --surface:#FFFFFF; --surface-2:#EEF3F3; --border:#DCE5E6;
   --text:#14252A; --muted:#5D6F74;
   --accent:#0E7A4F; --accent-soft:#E0F2E9;          /* PASS */
